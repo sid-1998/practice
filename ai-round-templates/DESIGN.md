@@ -1,19 +1,10 @@
 # DESIGN — <problem name>
 
-> Fill this in yourself in ~8 minutes. Terse bullets, not prose. This is a thinking
-> tool and a prompt, not a spec. Then feed it to plan mode.
 
 ## 1. Problem, restated
-<Two lines, in my own words. Who has what pain, and what does "solved" look like.>
 
 ## 2. Assumptions
-> Say these out loud to the interviewer and ask them to correct any.
-- Scale: ~<N> RPS, ~<N> records, <N> concurrent users
-- Consistency: <strong / eventual OK for X because Y>
-- Latency target: <p99 < Nms> on the critical path
-- Single region / single instance for now
-- Auth/identity is assumed handled upstream; requests arrive with a trusted user ID
-- <domain-specific assumption>
+
 
 ## 3. Scope
 **In (must work end to end, demoable):**
@@ -32,8 +23,6 @@
 | B | | | | Rejected because |
 | C | | | | Rejected because |
 
-**Why A for a 90-minute slice:** <reason>
-**The seam:** if we later need B, the change is isolated to <component/interface>, because <reason>.
 
 ## 5. Interfaces (the contract — write this before any code)
 
@@ -79,17 +68,7 @@ interface <Port> {
 
 ## 9. Observability
 - Logs: structured, correlation ID threaded from ingress
-- Metrics:
-  - `<name>` — request latency p50/p99 by endpoint
-  - `<name>` — error rate by error class
-  - `<name>` — <domain metric, e.g. queue depth / retry count>
-- **The one alert I'd page on:** <condition> — because it means <user-visible impact>
-- Trace: <span boundaries I'd add>
 
-## 10. Scale story (for the discussion, not for building today)
-- First bottleneck at 10×: <what> — fix: <shard / cache / queue / read replica>
-- Second: <what> — fix:
-- Known single point of failure I'm accepting today: <what> — acceptable because <reason>
 
 ## 11. Known debt taken on knowingly
 - <shortcut> — cost: <what it makes harder later>
