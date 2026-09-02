@@ -52,7 +52,7 @@ Tests:
 4. pluggability — a second stub model injected into the same adaptor changes the result with no
    other code touched
 
-## - [ ] Task 4 — `StubContentService` with explicit missing-content logging
+## - [x] Task 4 — `StubContentService` with explicit missing-content logging
 
 In-memory `id → Show` catalog. For **each** requested ID with no content: one WARN line
 (`requestId`, `showId`, `reason=content_not_found`), then one summary line with
