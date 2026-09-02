@@ -4,7 +4,7 @@ Scope is `DESIGN.md` plus four added requirements: a pluggable model seam under 
 per-ID logging when content is missing, one exception type per layer, and graceful degradation at
 the top boundary.
 
-Rules: one task at a time. Each task ships its implementation and its three tests in the same
+Rules: one task at a time. Task 5 was pulled ahead of Task 4 on request. Each task ships its implementation and its three tests in the same
 diff. Test command: `JAVA_HOME=/Users/sipahuja/Library/Java/JavaVirtualMachines/ms-21.0.8/Contents/Home mvn -q test`
 
 ---
@@ -20,7 +20,7 @@ Tests — `RequestContextTest`:
 2. boundary — blank locale is rejected
 3. failure — null `userId` throws `IllegalArgumentException` naming the field
 
-## - [ ] Task 2 — Contracts, exception hierarchy, token resolution
+## - [x] Task 2 — Contracts, exception hierarchy, token resolution
 
 Interfaces with javadoc failure contracts: `IRecommendationProvider`, `IContentService`,
 `IRecommendationService`, `RecommendationModel`. Exceptions in `error/`: shared base carrying
@@ -37,7 +37,7 @@ Tests — `StubTokenResolverTest`:
 3. failure — unknown token throws `InvalidTokenException`; message contains the `requestId` and
    does **not** contain the token value
 
-## - [ ] Task 3 — Pluggable model + `RecommendationAdaptor`
+## - [x] Task 3 — Pluggable model + `RecommendationAdaptor`
 
 `StubRecommendationModel` over an in-memory `userId → ordered List<String>` map (unknown user →
 empty list; an empty carousel is not an error). `RecommendationAdaptor implements
@@ -65,7 +65,7 @@ Tests:
 3. failure/degradation — mixed known + unknown IDs returns only the known ones, and a captured log
    handler asserts one WARN per missing ID with that ID present in the message
 
-## - [ ] Task 5 — `RecommendationService` (core orchestration)
+## - [x] Task 5 — `RecommendationService` (core orchestration)
 
 `IRecommendationService` impl; constructor-injected `IRecommendationProvider` + `IContentService`.
 Short-circuits to an empty response when the provider returns no IDs (no pointless content call).
