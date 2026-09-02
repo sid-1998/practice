@@ -1,6 +1,8 @@
 package com.practice.recommendation.api;
 
 import com.practice.recommendation.error.InvalidTokenException;
+import com.practice.recommendation.logging.LogEvents;
+import com.practice.recommendation.logging.LogLine;
 
 import java.util.Map;
 import java.util.logging.Logger;
@@ -22,18 +24,20 @@ public class StubTokenResolver implements TokenResolver {
     @Override
     public String resolveUserId(String requestId, String token) {
         if (token == null || token.isBlank()) {
-            LOG.warning("event=token_rejected requestId=" + requestId + " reason=token_missing");
+            LOG.warning(LogLine.of(LogEvents.TOKEN_REJECTED, requestId)
+                    .reason(LogEvents.REASON_TOKEN_MISSING).build());
             throw new InvalidTokenException(requestId, "token must not be null or blank");
         }
 
         String userId = userIdsByToken.get(token);
         if (userId == null) {
             // Deliberately logs no part of the token, not even a prefix.
-            LOG.warning("event=token_rejected requestId=" + requestId + " reason=token_unknown");
+            LOG.warning(LogLine.of(LogEvents.TOKEN_REJECTED, requestId)
+                    .reason(LogEvents.REASON_TOKEN_UNKNOWN).build());
             throw new InvalidTokenException(requestId, "token does not identify a known user");
         }
 
-        LOG.info("event=token_resolved requestId=" + requestId + " userId=" + userId);
+        LOG.info(LogLine.of(LogEvents.TOKEN_RESOLVED, requestId).userId(userId).build());
         return userId;
     }
 }
