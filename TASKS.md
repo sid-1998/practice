@@ -79,7 +79,7 @@ Tests (Mockito mocks of both ports):
 3. failure — provider throws → `RecommendationServiceException` wrapping the provider cause
 4. failure — content throws → same wrapper, distinguishable by cause type
 
-## - [ ] Task 6 — `RecommendationController` + demo `main()` + README
+## - [x] Task 6 — `RecommendationController` + demo `main()` + README
 
 `getRecommendations(String token, String locale)`: decode the token via `TokenResolver` to get
 the userId, store it in a validated `RequestContext` together with the locale and a fresh

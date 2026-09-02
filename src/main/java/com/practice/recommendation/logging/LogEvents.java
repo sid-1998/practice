@@ -17,6 +17,7 @@ public final class LogEvents {
     public static final String CONTENT_MISSING = "content_missing";
     public static final String CAROUSEL_BUILT = "carousel_built";
     public static final String CAROUSEL_FAILED = "carousel_failed";
+    public static final String CAROUSEL_DEGRADED = "carousel_degraded";
 
     public static final String REASON_TOKEN_MISSING = "token_missing";
     public static final String REASON_TOKEN_UNKNOWN = "token_unknown";
@@ -24,6 +25,7 @@ public final class LogEvents {
     public static final String REASON_MODEL_ERROR = "model_error";
     public static final String REASON_NO_RECOMMENDATIONS = "no_recommendations";
     public static final String REASON_CONTENT_NOT_FOUND = "content_not_found";
+    public static final String REASON_DEPENDENCY_FAILURE = "dependency_failure";
 
     public static final String LAYER_PROVIDER = "provider";
     public static final String LAYER_CONTENT = "content";
